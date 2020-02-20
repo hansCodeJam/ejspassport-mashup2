@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flash</title>
+    </head>
+    <body>
+        <p>
+            <a href="/single-flash">One line flash</a></br>
+            <a href="/no-flash">No flash</a></br>
+            <a href="/multiple-flash">Multiple message flash</a>
+        </p>
+        <% if(message) { %>
+            <p><%= message %></p>
+        <% } %>
+    </body>
+</html>

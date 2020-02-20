@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Options</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <div class="container">
+                <h1>Choose your api</h1>
+                <p>You are logged in as: <%= randomUser.name %></p>
+                <% randomUser.forEach((ele)=>{ %>
+                    <div class="myCard">
+                        <img src= <%= ele[0] %>>
+                        <h2 class=""> <%= `${ele[1]} ${ele[2]}` %> </h5>
+                    </div>
+                <%})%>
+            </div>
+        </div>
+    </body>
+</html>
