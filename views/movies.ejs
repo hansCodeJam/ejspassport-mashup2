@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>Movies</title>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="/style.css" type="text/css">
+    </head>
+    <body>
+        <header>Movies Now Playing</header> 
+      
+        <div class>
+            <% movies.forEach((el)=>{ %>
+                <div>
+                    <img src= <%='https://image.tmdb.org/t/p/w185'+ el[1] %>>
+                    <div>
+                        <h2> Title: <%= el[0] %> </h5>
+                        <p> Overview: <%= el[2] %> </p>
+                    </div>
+                </div>
+            <%})%>
+        </div>
+
+       
+    </body>
+</html>
+

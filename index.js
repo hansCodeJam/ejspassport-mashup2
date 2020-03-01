@@ -3,14 +3,15 @@ const app = express()
 const session =require('express-session')
 const User = require('./models/Users')
 const randomUser = require('./models/randomUser')
+const movies = require('./models/moviesList')
 const MongoStore = require('connect-mongo')(session)
 const logger = require('morgan')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const bcrypt = require('bcrypt')
-const flash =require('connect-flash')
-const {check, validationResult } = require('express-validator');
+const flash = require('connect-flash')
+const { check, validationResult } = require('express-validator');
 const passport = require('passport')
 require('dotenv').config()
 require('./lib/passport')
@@ -51,6 +52,7 @@ app.use((req,res,next)=>{
     res.locals.success = req.flash('successMessage')
     next()
 })
+
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
 app.get('/',(req,res)=>{
@@ -62,11 +64,12 @@ app.get('/register',(req,res)=>{
 app.get('/login',(req,res)=>{
     return res.render('login')
 })
+
 app.get('/loggedIn',(req,res)=>{
     if(req.isAuthenticated) {
-        return res.render('loggedIn')
+        return res.render('option')
     }
-    return res.redirect('/login')
+    return res.redirect('/option')
 })
 app.get('/registered',(req,res)=>{
     if(req.isAuthenticated){
@@ -83,7 +86,9 @@ app.get('/randomUser', (req, res) => {
     return res.render('randomUser', {randomUser})
 })
 
-
+app.get('/movies', (req, res) => {
+    return res.render('movies', {movies})
+})
 
 app.post('/register',[check('name', 'Name is required').not().isEmpty(),check('email', 'Please include a valid email').isEmail(),check('password', 'Please include valid password').isLength({min:3})],(req,res)=>{
     const errors = validationResult(req);
