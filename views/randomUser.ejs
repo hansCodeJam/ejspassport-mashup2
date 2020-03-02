@@ -4,6 +4,48 @@
         <title>Random</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body, html {
+    height: 100%;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+            }
+            /**
+            * Profile image component
+            */
+            .profile-header-container{
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .profile-header-img {
+                padding: 54px;
+            }
+
+            .profile-header-img > img.img-circle {
+                width: 120px;
+                height: 120px;
+                border: 2px solid #51D2B7;
+            }
+
+            .profile-header {
+                margin-top: 43px;
+            }
+
+            /**
+            * Ranking component
+            */
+            .rank-label-container {
+                margin-top: -19px;
+                /* z-index: 1000; */
+                text-align: center;
+            }
+
+            .label.label-default.rank-label {
+                background-color: rgb(81, 210, 183);
+                padding: 5px 10px 5px 10px;
+                border-radius: 27px;
+            }
+        </style>
         <link rel="stylesheet" href="/stylesheet/styleRandomUser.css" />
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -13,12 +55,20 @@
         <div>
             <div class="container">
                 <h1>Random</h1>
-                <% randomUser.forEach((ele)=>{ %>
-                    <div class="myCard">
-                        <img src= <%= ele[0] %>>
-                        <h2 class=""> <%= `${ele[1]} ${ele[2]}` %> </h5>
+                <div class="row">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <% randomUser.forEach((ele)=>{ %>
+                                <div>
+                                    <img class="img-circle" src= <%= ele[0] %>>
+                                    <div class="rank-label-container">
+                                        <span class="label label-default rank-label"> <%= `${ele[1]} ${ele[2]}` %> </span>
+                                    </div>
+                                </div>
+                            <%})%>
+                        </div>
                     </div>
-                <%})%>
+                </div>
             </div>
         </div>
        
